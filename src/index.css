@@ -30,6 +30,12 @@
   --radius-pixel: 0px;
 }
 
+@media (max-width: 768px) {
+  :root {
+    --sidebar-w: 0px;
+  }
+}
+
 body.light-theme {
   --deep-space: #f0f4f8;
   --window-glass: #ffffff;

@@ -129,3 +129,86 @@
   color: var(--deep-space);
   box-shadow: 0 0 10px rgba(63, 185, 80, 0.4);
 }
+
+@media (max-width: 768px) {
+  .sidebar {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 65px;
+    flex-direction: row;
+    padding: 0 15px;
+    border-right: none;
+    border-top: 3px solid var(--pixel-border);
+    justify-content: space-between;
+    align-items: center;
+    gap: 0;
+  }
+
+  .sidebar__logo,
+  .sidebar__divider,
+  .sidebar__status-dot,
+  .sidebar__time {
+    display: none;
+  }
+
+  .sidebar__nav {
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+    gap: 0;
+  }
+
+  .sidebar__link {
+    width: auto;
+    flex: 1;
+    height: 100%;
+    justify-content: center;
+    padding: 5px;
+    border: none;
+    border-top: 3px solid transparent;
+    margin-top: -3px; /* Align with sidebar top border */
+  }
+
+  .sidebar__link.active {
+    border-top-color: var(--accent-blue);
+    background: rgba(88, 166, 255, 0.1);
+  }
+
+  .sidebar__bottom {
+    flex-direction: row;
+    padding-top: 0;
+    height: 100%;
+    gap: 10px;
+    display: none; /* Hide for now to keep it clean, or keep resume/theme? */
+  }
+  
+  /* Let's show theme toggle and resume on mobile too but differently */
+  .sidebar {
+    padding-right: 10px;
+  }
+  
+  .sidebar__nav {
+    flex: 3;
+  }
+  
+  .sidebar__bottom {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .sidebar__resume-btn {
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+  }
+  
+  .sidebar__resume-btn .sidebar__link-label {
+    display: none;
+  }
+}

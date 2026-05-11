@@ -34,11 +34,20 @@
   max-width: 860px;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
+  .experience-section {
+    padding: 30px 20px 40px;
+  }
   .experience-grid .exp-detail,
   .exp-log-window {
     width: 100%;
     align-self: unset;
+  }
+  .exp-card__company {
+    font-size: 9px;
+  }
+  .exp-log-entry {
+    font-size: 10px;
   }
 }
 

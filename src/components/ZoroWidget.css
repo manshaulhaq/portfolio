@@ -63,3 +63,8 @@
   letter-spacing: 1px;
   margin-top: 4px;
 }
+@media (max-width: 768px) {
+  .zoro-widget {
+    display: none;
+  }
+}
