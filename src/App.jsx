@@ -63,6 +63,20 @@ function PageWrapper({ children }) {
 
 function AnimatedRoutes() {
   const location = useLocation();
+
+  // Add this useEffect to update page title
+  useEffect(() => {
+    const path = location.pathname;
+    let pageName = 'Home';
+
+    if (path === '/projects') pageName = 'Projects';
+    else if (path === '/experience') pageName = 'Experience';
+    else if (path === '/contact') pageName = 'Contact';
+    else pageName = 'Home';
+
+    document.title = `${pageName}`;
+  }, [location]);
+
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
