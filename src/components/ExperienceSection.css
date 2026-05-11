@@ -1,0 +1,190 @@
+/* ExperienceSection.css */
+.experience-section {
+  padding: 60px 40px 60px calc(var(--sidebar-w) + 40px);
+  position: relative;
+}
+
+.experience-section__title {
+  font-family: var(--font-pixel);
+  font-size: 13px;
+  color: var(--accent-blue);
+  text-shadow: 0 0 14px rgba(88, 166, 255, 0.5);
+  letter-spacing: 2px;
+  margin-bottom: 32px;
+}
+
+.experience-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 860px;
+  margin-bottom: 40px;
+}
+
+/* Detail card floats to the RIGHT (upper diagonal) */
+.experience-grid .exp-detail {
+  align-self: flex-end;
+  width: 80%;
+}
+
+/* Log window sits below to the LEFT (lower diagonal) */
+.exp-log-window {
+  align-self: flex-start;
+  width: 80%;
+  max-width: 860px;
+}
+
+@media (max-width: 700px) {
+  .experience-grid .exp-detail,
+  .exp-log-window {
+    width: 100%;
+    align-self: unset;
+  }
+}
+
+/* Scrolling log window */
+.exp-log-window {
+  background: color-mix(in srgb, var(--deep-space) 90%, transparent);
+  border: 3px solid var(--accent-blue);
+  box-shadow:
+    0 0 0 1px var(--deep-space),
+    0 0 16px rgba(88, 166, 255, 0.2);
+}
+
+.exp-log-window__titlebar {
+  background: color-mix(in srgb, var(--glass-3) 90%, transparent);
+  border-bottom: 3px solid var(--pixel-border);
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-silk);
+  font-size: 9px;
+  color: var(--accent-blue);
+  letter-spacing: 1px;
+}
+
+.exp-log-window__body {
+  padding: 14px;
+  height: 260px;
+  overflow: hidden;
+  position: relative;
+}
+
+.exp-log-scroll {
+  animation: log-scroll 20s linear infinite;
+}
+
+@keyframes log-scroll {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+.exp-log-scroll:hover {
+  animation-play-state: paused;
+}
+
+.exp-log-entry {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 5px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.exp-log-entry__ts {
+  color: var(--text-dim);
+  flex-shrink: 0;
+  font-size: 10px;
+}
+
+.exp-log-entry__level {
+  font-family: var(--font-silk);
+  font-size: 8px;
+  flex-shrink: 0;
+  padding: 1px 5px;
+  border: 1px solid;
+}
+
+.exp-log-entry__level--info {
+  color: var(--accent-blue);
+  border-color: var(--accent-blue);
+}
+
+.exp-log-entry__level--ok {
+  color: var(--accent-green);
+  border-color: var(--accent-green);
+}
+
+.exp-log-entry__level--debug {
+  color: var(--text-dim);
+  border-color: var(--text-dim);
+}
+
+.exp-log-entry__level--warn {
+  color: var(--accent-yellow);
+  border-color: var(--accent-yellow);
+}
+
+.exp-log-entry__msg {
+  color: var(--text-secondary);
+  word-break: break-word;
+}
+
+/* Experience details panel */
+.exp-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.exp-card {
+  background: color-mix(in srgb, var(--window-glass) 90%, transparent);
+  border: 3px solid var(--pixel-border);
+  padding: 16px;
+}
+
+.exp-card__company {
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  color: var(--accent-blue);
+  margin-bottom: 4px;
+  text-shadow: 0 0 8px rgba(88,166,255,0.3);
+}
+
+.exp-card__role {
+  font-family: var(--font-silk);
+  font-size: 9px;
+  color: var(--accent-purple);
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.exp-card__date {
+  font-family: var(--font-silk);
+  font-size: 8px;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.exp-card__achievements {
+  list-style: none;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.exp-card__achievements li::before {
+  content: '› ';
+  color: var(--accent-green);
+}
+
+.exp-card__tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 10px;
+}

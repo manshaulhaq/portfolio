@@ -1,0 +1,73 @@
+/* App.css */
+.app {
+  min-height: 100vh;
+  position: relative;
+}
+
+.app__content {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+}
+
+/* Section dividers */
+.section-divider {
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--pixel-border) 20%,
+    var(--accent-blue) 50%,
+    var(--pixel-border) 80%,
+    transparent 100%
+  );
+  margin: 0 calc(var(--sidebar-w) + 40px) 0 calc(var(--sidebar-w) + 40px);
+  opacity: 0.4;
+}
+
+/* Boot screen */
+.boot-screen {
+  position: fixed;
+  inset: 0;
+  background: var(--deep-space);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.boot-screen__logo {
+  font-family: var(--font-pixel);
+  font-size: 20px;
+  color: var(--accent-blue);
+  text-shadow: 0 0 30px var(--accent-blue);
+  letter-spacing: 4px;
+  animation: glow-pulse 1s ease-in-out infinite;
+}
+
+.boot-screen__text {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--accent-green);
+}
+
+.boot-screen__bar {
+  width: 240px;
+  height: 10px;
+  border: 3px solid var(--pixel-border);
+  background: var(--deep-space);
+  overflow: hidden;
+}
+
+.boot-screen__bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+  animation: boot-load 1.8s steps(20) forwards;
+}
+
+@keyframes boot-load {
+  from { width: 0; }
+  to { width: 100%; }
+}

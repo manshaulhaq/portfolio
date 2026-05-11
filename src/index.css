@@ -1,0 +1,247 @@
+/* ============================================
+   PIXEL ART DASHBOARD — GLOBAL DESIGN SYSTEM
+   Nighttime Lab in Mardan by Mansha Ul Haq
+   ============================================ */
+
+/* --- Color Tokens --- */
+:root {
+  --deep-space: #0d1117;
+  --window-glass: #161b22;
+  --glass-2: #1c2333;
+  --glass-3: #21262d;
+  --accent-blue: #58a6ff;
+  --accent-purple: #8b5cf6;
+  --accent-green: #3fb950;
+  --accent-orange: #f78166;
+  --accent-yellow: #e3b341;
+  --accent-pink: #f7768e;
+  --text-primary: #e6edf3;
+  --text-secondary: #8b949e;
+  --text-dim: #484f58;
+  --pixel-border: #30363d;
+  --pixel-border-glow: #388bfd;
+  --moon-glow: rgba(88, 166, 255, 0.15);
+
+  --font-pixel: 'Press Start 2P', monospace;
+  --font-silk: 'Silkscreen', monospace;
+  --font-mono: 'Share Tech Mono', monospace;
+
+  --sidebar-w: 72px;
+  --radius-pixel: 0px;
+}
+
+body.light-theme {
+  --deep-space: #f0f4f8;
+  --window-glass: #ffffff;
+  --glass-2: #e2e8f0;
+  --glass-3: #cbd5e0;
+  --accent-blue: #3182ce;
+  --accent-purple: #6b46c1;
+  --accent-green: #2f855a;
+  --accent-orange: #dd6b20;
+  --accent-yellow: #b7791f;
+  --accent-pink: #d53f8c;
+  --text-primary: #1a202c;
+  --text-secondary: #4a5568;
+  --text-dim: #a0aec0;
+  --pixel-border: #a0aec0;
+  --pixel-border-glow: #4299e1;
+  --moon-glow: rgba(66, 153, 225, 0.15);
+}
+
+/* Ensure background transitions smoothly when toggling */
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--deep-space);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: none;
+  image-rendering: pixelated;
+}
+
+/* --- Pixel Perfect Border Utility --- */
+.pixel-border {
+  border: 3px solid var(--pixel-border);
+  box-shadow:
+    0 0 0 1px var(--deep-space),
+    inset 0 0 0 1px var(--deep-space);
+}
+
+.pixel-border-glow {
+  border: 3px solid var(--pixel-border-glow);
+  box-shadow:
+    0 0 0 1px var(--deep-space),
+    0 0 12px rgba(56, 139, 253, 0.4),
+    inset 0 0 0 1px var(--deep-space);
+}
+
+.pixel-border-purple {
+  border: 3px solid var(--accent-purple);
+  box-shadow:
+    0 0 0 1px var(--deep-space),
+    0 0 12px rgba(139, 92, 246, 0.35),
+    inset 0 0 0 1px var(--deep-space);
+}
+
+.pixel-border-green {
+  border: 3px solid var(--accent-green);
+  box-shadow:
+    0 0 0 1px var(--deep-space),
+    0 0 10px rgba(63, 185, 80, 0.3),
+    inset 0 0 0 1px var(--deep-space);
+}
+
+/* --- Pixel Window Component --- */
+.pixel-window {
+  background: var(--window-glass);
+  border: 3px solid var(--pixel-border);
+  box-shadow:
+    0 0 0 1px var(--deep-space),
+    0 4px 24px rgba(0,0,0,0.5);
+  position: relative;
+}
+
+.pixel-window__titlebar {
+  background: var(--glass-3);
+  border-bottom: 3px solid var(--pixel-border);
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-silk);
+  font-size: 10px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.pixel-window__dot {
+  width: 10px;
+  height: 10px;
+  border: 2px solid;
+  image-rendering: pixelated;
+}
+
+.pixel-window__dot--red { border-color: var(--accent-orange); background: var(--accent-orange); }
+.pixel-window__dot--yellow { border-color: var(--accent-yellow); background: var(--accent-yellow); }
+.pixel-window__dot--green { border-color: var(--accent-green); background: var(--accent-green); }
+
+.pixel-window__body {
+  padding: 16px;
+}
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--deep-space); }
+::-webkit-scrollbar-thumb { background: var(--pixel-border); }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-blue); }
+
+/* --- Utility --- */
+.pixel-font { font-family: var(--font-pixel); }
+.silk-font { font-family: var(--font-silk); }
+.mono-font { font-family: var(--font-mono); }
+
+.text-accent { color: var(--accent-blue); }
+.text-purple { color: var(--accent-purple); }
+.text-green { color: var(--accent-green); }
+.text-orange { color: var(--accent-orange); }
+.text-yellow { color: var(--accent-yellow); }
+.text-pink { color: var(--accent-pink); }
+.text-dim { color: var(--text-dim); }
+.text-secondary { color: var(--text-secondary); }
+
+/* --- Scanline Overlay --- */
+.scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.07) 2px,
+    rgba(0, 0, 0, 0.07) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* --- Pixel Tag / Badge --- */
+.pixel-badge {
+  display: inline-block;
+  font-family: var(--font-silk);
+  font-size: 9px;
+  padding: 4px 8px;
+  border: 2px solid;
+  background: var(--deep-space);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  image-rendering: pixelated;
+}
+
+.pixel-badge--blue { border-color: var(--accent-blue); color: var(--accent-blue); }
+.pixel-badge--purple { border-color: var(--accent-purple); color: var(--accent-purple); }
+.pixel-badge--green { border-color: var(--accent-green); color: var(--accent-green); }
+.pixel-badge--orange { border-color: var(--accent-orange); color: var(--accent-orange); }
+.pixel-badge--yellow { border-color: var(--accent-yellow); color: var(--accent-yellow); }
+.pixel-badge--red { border-color: var(--accent-pink); color: var(--accent-pink); }
+.pixel-badge--sky { border-color: var(--accent-blue); color: #7dd3fc; }
+
+/* --- Blinking Cursor --- */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor-blink {
+  display: inline-block;
+  width: 8px;
+  height: 14px;
+  background: var(--accent-green);
+  animation: blink 1s step-end infinite;
+  vertical-align: text-bottom;
+  margin-left: 2px;
+}
+
+/* --- Glow Pulse --- */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(88, 166, 255, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(88, 166, 255, 0.7); }
+}
+
+.glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* --- Noise Texture --- */
+.pixel-noise {
+  position: relative;
+}
+.pixel-noise::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  pointer-events: none;
+  opacity: 0.04;
+  z-index: 0;
+}

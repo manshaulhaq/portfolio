@@ -1,0 +1,112 @@
+/* PixelBackground.css */
+:root {
+  --sky-1: #0a0e1a;
+  --sky-2: #0d1117;
+  --sky-3: #0f1620;
+  --sky-4: #111927;
+  --star-opacity: 1;
+}
+
+body.light-theme {
+  --sky-1: #bae6fd;
+  --sky-2: #7dd3fc;
+  --sky-3: #38bdf8;
+  --sky-4: #0284c7;
+  --star-opacity: 0;
+}
+
+.pixel-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    var(--sky-1) 0%,
+    var(--sky-2) 40%,
+    var(--sky-3) 70%,
+    var(--sky-4) 100%
+  );
+}
+
+/* Stars layer */
+.pixel-bg__stars {
+  position: absolute;
+  inset: 0;
+  opacity: var(--star-opacity);
+  transition: opacity 0.5s ease-in-out;
+  background-image:
+    radial-gradient(1px 1px at 10% 15%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 25% 8%, #c8d8f0 0%, transparent 100%),
+    radial-gradient(2px 2px at 40% 22%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 55% 5%, #a8c0e8 0%, transparent 100%),
+    radial-gradient(1px 1px at 70% 18%, #fff 0%, transparent 100%),
+    radial-gradient(2px 2px at 82% 10%, #c0d8f8 0%, transparent 100%),
+    radial-gradient(1px 1px at 90% 30%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 15% 35%, #d0e4ff 0%, transparent 100%),
+    radial-gradient(1px 1px at 35% 48%, #fff 0%, transparent 100%),
+    radial-gradient(2px 2px at 60% 40%, #a8c0e8 0%, transparent 100%),
+    radial-gradient(1px 1px at 78% 55%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 5% 60%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 45% 70%, #c0d8f8 0%, transparent 100%),
+    radial-gradient(2px 2px at 88% 72%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 20% 80%, #d0e4ff 0%, transparent 100%),
+    radial-gradient(1px 1px at 65% 85%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 93% 88%, #a8c0e8 0%, transparent 100%),
+    radial-gradient(1px 1px at 3% 92%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 50% 95%, #c8d8f0 0%, transparent 100%),
+    radial-gradient(2px 2px at 75% 90%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 30% 12%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 48% 28%, #d8e8ff 0%, transparent 100%),
+    radial-gradient(1px 1px at 67% 60%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 8% 45%, #c0d0f0 0%, transparent 100%),
+    radial-gradient(1px 1px at 95% 50%, #fff 0%, transparent 100%);
+  animation: star-twinkle 4s ease-in-out infinite alternate;
+}
+
+@keyframes star-twinkle {
+  0% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+/* Moon/Sun */
+.pixel-bg__moon {
+  position: absolute;
+  top: 60px;
+  right: 120px;
+  width: 100px;
+  height: 100px;
+  will-change: transform;
+}
+
+/* Clouds */
+.pixel-bg__cloud {
+  position: absolute;
+  will-change: transform;
+  opacity: 0.8; /* Increased opacity since we removed star conflict in light mode */
+}
+
+/* Add specific transition to clouds so they smoothly change color */
+.pixel-bg__cloud svg rect {
+  transition: fill 0.5s ease;
+}
+
+.pixel-bg__cloud--1 { top: 160px; left: -60px; }
+.pixel-bg__cloud--2 { top: 280px; right: 80px; }
+.pixel-bg__cloud--3 { top: 420px; left: 200px; opacity: 0.6; }
+.pixel-bg__cloud--4 { top: 520px; right: 300px; opacity: 0.45; }
+
+/* Ground gradient at the bottom */
+.pixel-bg__ground {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(
+    0deg,
+    color-mix(in srgb, var(--deep-space) 90%, transparent) 0%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
